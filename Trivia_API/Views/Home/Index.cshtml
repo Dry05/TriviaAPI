@@ -1,0 +1,188 @@
+﻿@{
+    ViewData["Title"] = "Trivia Quiz";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Veilige Trivia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trivia Quiz</h1>
+    <label for="questionAmount">Aantal vragen:</label>
+    <select id="questionAmount">
+        <option value="5">5 vragen</option>
+        <option value="10" selected>10 vragen</option>
+        <option value="15">15 vragen</option>
+        <option value="20">20 vragen</option>
+        <option value="25">25 vragen</option>
+    </select>
+    <button onclick="loadQuestions()">Start quiz</button>
+    <div id="loading" style="display: none;">Vragen laden...</div>
+    <div id="questions-container"></div>
+    <button onclick="submitAnswers()" style="display: none;" id="submitBtn">Controleer Antwoorden</button>
+    <div id="result" class="result" style="display: none;"></div>
+
+    <script>
+        let currentQuestions = [];
+
+        async function loadQuestions() {
+            try {
+                const loadingDiv = document.getElementById('loading');
+                loadingDiv.style.display = 'block';
+
+                const amount = document.getElementById('questionAmount').value;
+                const response = await fetch(`/api/question?amount=${amount}`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                currentQuestions = await response.json();
+
+                const container = document.getElementById('questions-container');
+                
+                const submitBtn = document.getElementById('submitBtn');
+
+                container.innerHTML = '';
+                loadingDiv.style.display = 'none';
+
+                currentQuestions.forEach((q, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'question';
+                    questionDiv.innerHTML = `
+                                <strong>Vraag ${index + 1}: ${q.questionText}</strong><br>
+                            `;
+
+                    q.allAnswers.forEach(answer => {
+                       
+                        const decodedAnswer = answer.replace(/&quot;/g, '"')
+                            .replace(/&#039;/g, "'")
+                            .replace(/&amp;/g, '&')
+                            .replace(/&lt;/g, '<')
+                            .replace(/&gt;/g, '>');
+
+                        questionDiv.innerHTML += `
+                                    <label>
+                                        <input type="radio" name="q${q.id}" value="${answer.replace(/"/g, '&quot;')}">
+                                        ${decodedAnswer}
+                                    </label><br>
+                                `;
+                    });
+
+                    container.appendChild(questionDiv);
+                });
+
+                submitBtn.style.display = 'block';
+                document.getElementById('result').style.display = 'none';
+
+            } catch (error) {
+                console.error('Error loading questions:', error);
+                document.getElementById('loading').innerHTML = 'Fout bij laden van vragen. Probeer opnieuw.';
+                document.getElementById('loading').style.color = 'red';
+            }
+        }
+
+        async function submitAnswers() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<strong>Antwoorden worden gecontroleerd...</strong>';
+            resultDiv.style.display = 'block';
+
+            const answersToCheck = [];
+
+            for (const q of currentQuestions) {
+                const selected = document.querySelector(`input[name="q${q.id}"]:checked`);
+                if (selected) {
+                    answersToCheck.push({
+                        questionId: q.id,
+                        userAnswer: selected.value
+                    });
+                }
+            }
+
+            if (answersToCheck.length === 0) {
+                resultDiv.innerHTML = '<p style="color: red;">⚠️ Je hebt geen vragen beantwoord!</p>';
+                return;
+            }
+
+            try {
+              
+                const response = await fetch('/api/answer/checkanswers', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ answers: answersToCheck })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const batchResult = await response.json();
+
+                let resultsHtml = `<strong>Score: ${batchResult.totalScore} van de ${currentQuestions.length}</strong><br><br>`;
+
+                batchResult.results.forEach(result => {
+                    if (result.isCorrect) {
+                        resultsHtml += `<p class="correct">✅ Vraag ${result.questionId}: Correct!</p>`;
+                    } else {
+                        resultsHtml += `<p class="incorrect">❌ Vraag ${result.questionId}: Fout</p>`;
+                    }
+                });
+
+                const answeredIds = batchResult.results.map(r => r.questionId);
+                currentQuestions.forEach(q => {
+                    if (!answeredIds.includes(q.id)) {
+                        resultsHtml += `<p>⚠️ Vraag ${q.id}: Niet beantwoord</p>`;
+                    }
+                });
+
+                resultDiv.innerHTML = resultsHtml;
+
+            } catch (error) {
+                console.error('Error checking answers:', error);
+                resultDiv.innerHTML = '<p style="color: red;">❌ Fout bij controleren van antwoorden. Probeer opnieuw.</p>';
+            }
+        }
+
+    </script>
+</body>
+</html>

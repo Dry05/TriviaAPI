@@ -1,0 +1,33 @@
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\bin\Debug\net8.0\appsettings.json
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\bin\Debug\net8.0\Trivia API.staticwebassets.runtime.json
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\bin\Debug\net8.0\Trivia API.exe
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\bin\Debug\net8.0\Trivia API.deps.json
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\bin\Debug\net8.0\Trivia API.runtimeconfig.json
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\bin\Debug\net8.0\Trivia API.dll
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\bin\Debug\net8.0\Trivia API.pdb
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\Trivia API.csproj.AssemblyReference.cache
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\Trivia API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\Trivia API.AssemblyInfoInputs.cache
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\Trivia API.AssemblyInfo.cs
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\Trivia API.csproj.CoreCompileInputs.cache
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\Trivia API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\Trivia API.RazorAssemblyInfo.cache
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\Trivia API.RazorAssemblyInfo.cs
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\staticwebassets\msbuild.Trivia API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\staticwebassets\msbuild.build.Trivia API.props
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Trivia API.props
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Trivia API.props
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\scopedcss\bundle\Trivia API.styles.css
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\scopedcss\projectbundle\Trivia API.bundle.scp.css
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\Trivia API.csproj.Up2Date
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\Trivia API.dll
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\refint\Trivia API.dll
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\Trivia API.pdb
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\Trivia API.genruntimeconfig.cache
+C:\Users\Bas van Turnhout\Documents\Trivia API\Trivia API\obj\Debug\net8.0\ref\Trivia API.dll
